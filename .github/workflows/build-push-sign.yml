@@ -25,7 +25,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${GITHUB_REPOSITORY_OWNER}/cosign-keyless-action:latest
+          tags: ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/cosign-keyless-action:latest
 
       - uses: sigstore/cosign-installer@main
 
@@ -35,10 +35,10 @@ jobs:
           COSIGN_EXPERIMENTAL: 1
         run: |
           cosign sign \
-            ghcr.io/${GITHUB_REPOSITORY_OWNER}/cosign-keyless-action:latest
+            ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/cosign-keyless-action:latest
 
       - name: Verify the pushed tags
-        run: cosign verify ghcr.io/${GITHUB_REPOSITORY_OWNER}/cosign-action-action:latest
+        run: cosign verify ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/cosign-action-action:latest
         env:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           COSIGN_EXPERIMENTAL: 1

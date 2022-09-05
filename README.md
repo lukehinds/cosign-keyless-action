@@ -1,1 +1,1 @@
-# oidc-action
+# cosign github action example

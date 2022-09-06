@@ -1,3 +1,14 @@
-FROM nginx:mainline-alpine
-RUN rm /etc/nginx/conf.d/*
-ADD hello.conf /etc/nginx/conf.d/
+FROM golang:1.16-alpine
+
+WORKDIR /app
+
+COPY go.mod ./
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /webapp
+
+EXPOSE 8080
+
+ENTRYPOINT ["/webapp"]

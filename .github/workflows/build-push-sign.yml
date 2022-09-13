@@ -7,7 +7,6 @@ on:
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
-    types: [closed]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -18,8 +17,6 @@ env:
 
 jobs:
   build:
-    if: ${{ github.event.pull_request.merged }}
-
     runs-on: ubuntu-latest
     permissions:
       contents: read

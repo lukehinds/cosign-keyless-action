@@ -13,7 +13,7 @@ func main() {
     })
 
     http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprintf(w, "Hi There!")
+        fmt.Fprintf(w, "Hi There Yolanda!")
     })
 
     log.Fatal(http.ListenAndServe(":8080", nil))
